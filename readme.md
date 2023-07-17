@@ -1,11 +1,13 @@
 # K6 - Performance Test   
 
-K6 é uma ferramenta para executar alguns tipos de teste de performance. A maneira de programar o teste é através da sintaxe do Javascript, porém toda sua engine é através de Golang, dada a desenvoltura de Go para execução com boa performance.   
+K6 é uma ferramenta para executar alguns tipos de teste de performance. A maneira de programar o teste é através da sintaxe do Javascript, porém toda sua engine foi ocnstruída com Golang, dada a desenvoltura de Go para execução com boa performance.  K6 é uma alternativa a ferramentas tradicionais, como por exemplo, o Jmeter que é uma ferramenta com interface gráfica que permite teste de performance.  
 
+Sua instalação é simples, feita através de um binário que pode ser instalado nos principais sistemas operacionais e com Docker.   
 
 Segue a Documentação do k6:  
 [Detalhes sobre o k6](https://k6.io/docs/)     
 
+## Como executar via CLI
 
 * Execução básica do teste deve informar o nome do arquivo que deve ser executado.
 `k6 run script.js`  
@@ -32,7 +34,8 @@ Descrição das métricas: [Detalhe das métricas](https://k6.io/docs/using-k6/m
 
 * __med__ = mediana. O valor real que está entre (ao meio) de todas as requisições.  
 
-* __p__ = percentil. O valor que atenda uma determinada porcentagem da amostra. Por exemplo: 90% dos usuários tiveram tempo de resposta de até 1.7 segundos.     
+* __p__ = percentil. O valor que atenda uma determinada porcentagem da amostra. Por exemplo: 90% dos usuários tiveram tempo de resposta de até 1.7 segundos.       
+
 
 Podemos também customizar as métricas: [Custom Metrics](https://k6.io/docs/using-k6/metrics/create-custom-metrics/)  
 Exemplo de métricas customizadas: [metricas customizadas](./thresholds-all.js)     
