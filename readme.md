@@ -34,7 +34,7 @@ Cada tipo de teste deve ser executado de acordo com o contexto da aplicação al
 
 ## Onde programar os tipos de testes   
 
-Cada um dos tipos de testes são configurado dentro da variável `options`. Vejamos abaixo como seria a configuração para cada tipo de teste.  
+Cada um dos tipos de testes são configurados dentro da variável `options`. Vejamos abaixo como seria a configuração para cada tipo da tabela acima.  
 
 
 __Smoke testing__  
