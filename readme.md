@@ -92,7 +92,7 @@ O K6 oferece diversas opções para organização do teste. Entre elas, temos a 
 
 Podemos verificar a ordenação acima em: [opção de ordenação](./config.json).
 
-Outra maneira de ordenar o comportamento do teste, é através do arquivo `config.json`. Nele, definimos as __stages__, __hosts__, __thresholds__, etc. Ele deve ser colocado dentro do diretório __loadimpact/k6/__ . A configuração pode ser vista em [cofig](./config.json).  
+Outra maneira de ordenar o comportamento do teste, é através do arquivo `config.json`. Nele, definimos as __stages__, __hosts__, __thresholds__, etc. Ele deve ser colocado dentro do diretório __loadimpact/k6/__ . A configuração pode ser vista em [config.js](./config.json).  
 Para mais detalhes: [default config path](https://k6.io/docs/using-k6/k6-options/reference/#config).  
 
 Mais opções: [k6 options](https://k6.io/docs/using-k6/k6-options/reference/).    
@@ -100,7 +100,7 @@ Mais opções: [k6 options](https://k6.io/docs/using-k6/k6-options/reference/).
 
 ## Browser (xk6) - Módulo experimental e passivel de alterações. 
 
-O k6 possibilita testes de performace no frontend. Além disso, podemos fazer testes híbridos, ou seja, articular dentro dos testes um fluxo que interaja  backend e frontend. Pode ver sobre o primeiro caso, apenas com frontend no [browser.js](./browser.js). O segundo caso, chamado de híbrido, pode ser conferido em [hibrid](./hybrid-test.js).     
+O k6 possibilita testes de performace no frontend. Além disso, podemos fazer testes híbridos, ou seja, articular dentro dos testes um fluxo que interaja  backend e frontend. Pode ver sobre o primeiro caso, apenas com frontend no [browser.js](./browser.js). O segundo caso, chamado de híbrido, pode ser conferido em [hibrid.js](./hybrid-test.js).     
 
 Para executar os testes com o browser, precisamos setar a variável de ambiente `$env:K6_BROWSER_ENABLED="true"` .
 
