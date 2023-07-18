@@ -1,6 +1,6 @@
 # K6 - Performance Test   
 
-Esta é uma documentação inicial sobre testes de performance com k6.
+Esta é uma documentação inicial sobre testes de performance com k6, baseada na documentação oficial. Para além de aprender a utilizar a ferramenta, a documentação do k6 é também um fonte para aprender sobre testes de performance.
 
 K6 é uma ferramenta para executar alguns tipos de teste de performance. A maneira de programar o teste é através da sintaxe do Javascript, porém toda sua engine foi construída com Golang, dada a desenvoltura de Go para execução com boa performance.  K6 é uma alternativa a ferramentas tradicionais, como por exemplo, o Jmeter que é uma ferramenta com interface gráfica que permite teste de performance.  
 
@@ -11,8 +11,26 @@ Segue a Documentação do k6:
 [Detalhes sobre o k6](https://k6.io/docs/)     
 
 
-## Tipos de testes de performance   
+## Tipos de testes de performance que podemos fazer com k6.   
 
+* __Smoke tests__ valida se o sistema performa adequadamente acima da carga mínima.
+* __Avarage-load test__ valida como o sistema performa acima das condições normais esperadas.  
+* __Stress tests__  valida como o sistema performa quando a carga excede o limite da sua capacidade média. 
+* __Soak tests__   valida  como o sistema se recupera e performa sob um extenso período.
+* __Spike tests__  valida o comportamento e a sobrevivencia do sistema em casos de aumentos repentinos, curtos ou massivo no tráfego de usuários.  
+* __Breakpoint tests__ consiste em gradativamente aumentar a carga para identificar o limite da capacidade do sistema.     
+
+Segue abaixo a tabela disponibilizada na documentação oficial do k6. Nela podemos ver resumidamente o tipo com a quantidade de usuários virtuais (__VUs__), a duração e contexto que podemos utilizar estes testes.   
+
+
+__Tabela de resumo para cada tipo dos testes__
+
+<div class="table-wrapper-module--table-wrapper--0fa35"><table><thead><tr><th>Tipo</th><th>VUs (usuários virtuais)/Throughput</th><th>Duração</th><th>Quando?</th></tr></thead><tbody><tr><td><a href="/docs/test-types/smoke-testing">Smoke</a></td><td>Baixa</td><td>Curta (segundos ou minutos)</td><td>Quando ocorre uma alteração relevante no sistema e é necessário verificar se a lógica de uma funcionalidade importante foi impactada.</td></tr><tr><td><a href="/docs/test-types/load-testing">Carga</a></td><td>Média de produção</td><td>Média (5-60 minutos)</td><td>Avalia se o sistema mantém a performance com a média de usuários em produção.</td></tr><tr><td><a href="/docs/test-types/stress-testing">Stress</a></td><td>Alta (acima da média)</td><td>Média (5-60 minutos)</td><td>Quando o sistema irá receber um carga acima da média e é necessário ver como ele lida com isso.</td></tr><tr><td><a href="/docs/test-types/soak-testing">Soak</a></td><td>Média</td><td>Longa (horas)</td><td>Após alterações para verificar o sistema sob uso contínuo prolongado</td></tr><tr><td><a href="/docs/test-types/spike-testing">Spike</a></td><td>Muito alta</td><td>Curta (alguns minutos)</td><td>Quando o sistema se prepara para eventos sazionais que receberá picos de tráfego</td></tr><tr><td><a href="/docs/test-types/breakpoint-testing">Breakpoint</a></td><td>Aumentar até quebrar</td><td>Enquanto for necessário</td><td>Algumas vezes para encontrar os limites superiores do sistema</td></tr></tbody></table></div>   
+
+__Fonte:__ [k6 - Test type cheat sheet](https://k6.io/docs/test-types/load-test-types/#test-type-cheat-sheet) -  2023.  
+
+
+Cada tipo de teste deve ser executado de acordo com o contexto da aplicação alinhado com as necessidades da equipe.
 
 ## Onde programar os tipos de testes  
 
@@ -57,7 +75,7 @@ As métricas no K6 estão organizadas pelos seguintes tipos de métricas:
 * __Rates__   frequencia que um valor diferente de zero ocorre.   
 * __Trends__  é a porcentagem.   
 
-É atraveés deste tipos de métricas que podemos criar outras de maneira customizada. Como o exemplo do código dentro de `thresholds-all.js`.  
+É atraveés deste tipos de métricas que podemos criar outras de maneira customizada. Como o exemplo do código dentro de [`thresholds-all.js`](./thresholds-all.js).  
 
 
 ## Assertions (Checks)  
