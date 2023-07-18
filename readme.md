@@ -1,11 +1,21 @@
 # K6 - Performance Test   
 
-K6 é uma ferramenta para executar alguns tipos de teste de performance. A maneira de programar o teste é através da sintaxe do Javascript, porém toda sua engine foi ocnstruída com Golang, dada a desenvoltura de Go para execução com boa performance.  K6 é uma alternativa a ferramentas tradicionais, como por exemplo, o Jmeter que é uma ferramenta com interface gráfica que permite teste de performance.  
+Esta é uma documentação inicial sobre testes de performance com k6.
 
-Sua instalação é simples, feita através de um binário que pode ser instalado nos principais sistemas operacionais e com Docker.   
+K6 é uma ferramenta para executar alguns tipos de teste de performance. A maneira de programar o teste é através da sintaxe do Javascript, porém toda sua engine foi construída com Golang, dada a desenvoltura de Go para execução com boa performance.  K6 é uma alternativa a ferramentas tradicionais, como por exemplo, o Jmeter que é uma ferramenta com interface gráfica que permite teste de performance.  
+
+### Instalação
+Sua instalação é simples, feita através de um binário que pode ser instalado nos principais sistemas operacionais e com Docker.     
 
 Segue a Documentação do k6:  
 [Detalhes sobre o k6](https://k6.io/docs/)     
+
+
+## Tipos de testes de performance   
+
+
+## Onde programar os tipos de testes  
+
 
 ## Como executar via CLI
 
@@ -72,4 +82,29 @@ No exemplo acima, temos definido que para a metrica `http_req_failed` o cirtéri
 
 Definições de Threshold abaixo:     
 
-[Threshold](https://k6.io/docs/using-k6/thresholds/)  
+[Threshold](https://k6.io/docs/using-k6/thresholds/).      
+
+
+
+## Opções de execução do teste
+
+O K6 oferece diversas opções para organização do teste. Entre elas, temos a estrutura entre `setup`, `teardown` e `default`. Em __setup__, a função é executada apenas uma única vez na inicialização do teste. Equanto que __teardown__, é a execução em um única vez no final do teste. A função __default__, executa os testes.  
+
+Podemos verificar a ordenação acima em: [opção de ordenação](./config.json).
+
+Outra maneira de ordenar o comportamento do teste, é através do arquivo `config.json`. Nele, definimos as __stages__, __hosts__, __thresholds__, etc. Ele deve ser colocado dentro do diretório __loadimpact/k6/__ . A configuração pode ser vista em [cofig](./config.json).  
+Para mais detalhes: [default config path](https://k6.io/docs/using-k6/k6-options/reference/#config).  
+
+Mais opções: [k6 options](https://k6.io/docs/using-k6/k6-options/reference/).    
+
+
+## Browser (xk6) - Módulo experimental e passivel de alterações. 
+
+O k6 possibilita testes de performace no frontend. Além disso, podemos fazer testes híbridos, ou seja, articular dentro dos testes um fluxo que interaja  backend e frontend. Pode ver sobre o primeiro caso, apenas com frontend no [browser.js](./browser.js). O segundo caso, chamado de híbrido, pode ser conferido em [hibrid](./hybrid-test.js).     
+
+Para executar os testes com o browser, precisamos setar a variável de ambiente `$env:K6_BROWSER_ENABLED="true"` .
+
+Para mais detalhes e exemplos, podemos ver em:  [Browser Test](https://k6.io/docs/using-k6-browser/overview/) .
+
+
+# Manifesto k6
