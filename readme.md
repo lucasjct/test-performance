@@ -8,7 +8,7 @@ K6 é uma ferramenta para executar alguns tipos de teste de performance. A manei
 Sua instalação é simples, feita através de um binário que pode ser instalado nos principais sistemas operacionais e com Docker.     
 
 Segue a Documentação do k6:  
-[Detalhes sobre o k6](https://k6.io/docs/)     
+[Detalhes sobre a instalação do k6](https://k6.io/docs/)     
 
 
 ## Tipos de testes de performance que podemos fazer com k6.   
@@ -23,8 +23,8 @@ Segue a Documentação do k6:
 Segue abaixo a tabela disponibilizada na documentação oficial do k6. Nela podemos ver resumidamente o tipo com a quantidade de usuários virtuais (__VUs__), a duração e contexto que podemos utilizar estes testes.   
 
 
-__Tabela de resumo para cada tipo dos testes__
-
+#### __Tabela de resumo para cada tipo dos testes__  
+ 
 <div class="table-wrapper-module--table-wrapper--0fa35"><table><thead><tr><th>Tipo</th><th>VUs (usuários virtuais)/Throughput</th><th>Duração</th><th>Quando?</th></tr></thead><tbody><tr><td><a href="/docs/test-types/smoke-testing">Smoke</a></td><td>Baixa</td><td>Curta (segundos ou minutos)</td><td>Quando ocorre uma alteração relevante no sistema e é necessário verificar se a lógica de uma funcionalidade importante foi impactada.</td></tr><tr><td><a href="/docs/test-types/load-testing">Carga</a></td><td>Média de produção</td><td>Média (5-60 minutos)</td><td>Avalia se o sistema mantém a performance com a média de usuários em produção.</td></tr><tr><td><a href="/docs/test-types/stress-testing">Stress</a></td><td>Alta (acima da média)</td><td>Média (5-60 minutos)</td><td>Quando o sistema irá receber um carga acima da média e é necessário ver como ele lida com isso.</td></tr><tr><td><a href="/docs/test-types/soak-testing">Soak</a></td><td>Média</td><td>Longa (horas)</td><td>Após alterações para verificar o sistema sob uso contínuo prolongado</td></tr><tr><td><a href="/docs/test-types/spike-testing">Spike</a></td><td>Muito alta</td><td>Curta (alguns minutos)</td><td>Quando o sistema se prepara para eventos sazionais que receberá picos de tráfego</td></tr><tr><td><a href="/docs/test-types/breakpoint-testing">Breakpoint</a></td><td>Aumentar até quebrar</td><td>Enquanto for necessário</td><td>Algumas vezes para encontrar os limites superiores do sistema</td></tr></tbody></table></div>   
 
 __Fonte:__ [k6 - Test type cheat sheet](https://k6.io/docs/test-types/load-test-types/#test-type-cheat-sheet) -  2023.  
@@ -32,15 +32,87 @@ __Fonte:__ [k6 - Test type cheat sheet](https://k6.io/docs/test-types/load-test-
 
 Cada tipo de teste deve ser executado de acordo com o contexto da aplicação alinhado com as necessidades da equipe.
 
-## Onde programar os tipos de testes  
+## Onde programar os tipos de testes   
+
+Cada um dos tipos de testes são configurado dentro da variável `options`. Vejamos abaixo como seria a configuração para cada tipo de teste.  
+
+
+__Smoke testing__  
+
+```javascript
+export const options = {
+  vus: 3, // Chave para Smoke test. Manter de 1 a 3 VUs, max 5 VUs
+  duration: '1m', // Este tempo pode ser curto ou com apenas 1 iteração
+};
+```  
+
+__Load testing__   
+
+```javascript
+export const options = {
+  // Key configurations for avg load test in this section
+  stages: [
+    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '30m', target: 100 }, // stay at 100 users for 10 minutes
+    { duration: '5m', target: 0 }, // ramp-down to 0 users
+  ],
+};
+```   
+
+__Stress testing__  
+```javascript
+export const options = {
+  // Key configurations for Stress in this section
+  stages: [
+    { duration: '10m', target: 200 }, // traffic ramp-up from 1 to a higher 200 users over 10 minutes.
+    { duration: '30m', target: 200 }, // stay at higher 200 users for 10 minutes
+    { duration: '5m', target: 0 }, // ramp-down to 0 users
+  ],
+};
+```  
+
+__Soak testing__
+```javascript
+export const options = {
+  // Key configurations for Soak test in this section
+  stages: [
+    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
+    { duration: '8h', target: 100 }, // stay at 100 users for 8 hours!!!
+    { duration: '5m', target: 0 }, // ramp-down to 0 users
+  ],
+};
+```
+
+__Spike testing__
+```javascript
+export const options = {
+  // Key configurations for spike in this section
+  stages: [
+    { duration: '2m', target: 2000 }, // fast ramp-up to a high point
+    // No plateau
+    { duration: '1m', target: 0 }, // quick ramp-down to 0 users
+  ],
+};
+```   
+__Breakpoint testing__    
+
+```javascript
+export const options = {
+  // Key configurations for breakpoint in this section
+  executor: 'ramping-arrival-rate', //Assure load increase if the system slows
+  stages: [
+    { duration: '2h', target: 20000 }, // just slowly ramp-up to a HUGE load
+  ],
+};
+```
 
 
 ## Como executar via CLI
 
-* Execução básica do teste deve informar o nome do arquivo que deve ser executado.
+* Execução básica do teste deve informar o nome do arquivo que deve ser executado.  
 `k6 run script.js`  
 
-* Execucação acrescentando virtual users e duração do teste via CLI (`vus`)  
+* Execucação acrescentando virtual users e duração do teste via CLI (`vus`)     
 `k6 run  --vus 10 --duration 30s script.js`  
 
 
