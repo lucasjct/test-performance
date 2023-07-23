@@ -198,3 +198,17 @@ Para mais detalhes e exemplos, podemos ver em:  [Browser Test](https://k6.io/doc
 
 
 # Manifesto k6
+
+O manifesto, é a maneira explicita em que os desenvolvedores da ferramenta argumentam o porquê acreditam na aplicação desta para testes de performance. Vejamos o seus pontos.   
+
+## Um teste simples é melhor do que não testar.  
+
+* Um teste de carga deve __imitar o número de usuários e clientes__ o mais próximo possível do mundo real.   
+* __Inicie por um teste simples__, sinta a segurança de que está obtendo algo com este teste. Depois disso, aumente a complexidade do teste até onde entender que não estará sendo um esforço alto para um retorno insuficiente.   
+* Há dois tipos de organização de teste de carga. Eles podem ser 1) __"unidade de teste de carga"__ e 2) __"cenário de teste de carga"__.     
+    * Unidade de teste de carga, podemos começar com a verificação de performance para um endpoint em isolado.   
+    * Cenario de teste de carga, reproduz o tráfego no sistema de maneira consistenete mais próximo do que será encontrado no mundo real.    
+
+* __Teste de carga deve ser orientado a objetivos__ . Especificar os objetivos da performance é parte importante do que queremos com o teste de carga. Para isso, utilizar __checks__ e __thresholds__ importante para definir o que pode ou não falhar.  
+
+* Os testes de carga devem iniciar do nosso ambiente local.    
