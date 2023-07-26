@@ -50,11 +50,11 @@ __Load testing__
 
 ```javascript
 export const options = {
-  // Key configurations for avg load test in this section
+    // Chaves de configuração para teste de carga é nesta seção
   stages: [
-    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
-    { duration: '30m', target: 100 }, // stay at 100 users for 10 minutes
-    { duration: '5m', target: 0 }, // ramp-down to 0 users
+    { duration: '5m', target: 100 }, // o táfego faz o movimento de ramp-up from saltando de 1 para 100 usuários em 5 minutos.
+    { duration: '30m', target: 100 }, // mantém em 100 usuários por 10 minutos
+    { duration: '5m', target: 0 }, // faz o movimento de ramp-down descendo de 100 para 0 usuários.
   ],
 };
 ```   
@@ -62,11 +62,11 @@ export const options = {
 __Stress testing__  
 ```javascript
 export const options = {
-  // Key configurations for Stress in this section
+    // Chaves de configuração para testes de stress
   stages: [
-    { duration: '10m', target: 200 }, // traffic ramp-up from 1 to a higher 200 users over 10 minutes.
-    { duration: '30m', target: 200 }, // stay at higher 200 users for 10 minutes
-    { duration: '5m', target: 0 }, // ramp-down to 0 users
+    { duration: '10m', target: 200 }, // o trafego faz o movimento de ramp-up de 1 to  200 usuarios até 10 minutos.
+    { duration: '30m', target: 200 }, // mantem 200 usuários por 10 minutos
+    { duration: '5m', target: 0 }, // faz o movimento ramp-down descendo para 0 usuários.
   ],
 };
 ```  
@@ -74,11 +74,11 @@ export const options = {
 __Soak testing__
 ```javascript
 export const options = {
-  // Key configurations for Soak test in this section
+    // Chaves de configuração para Teste Soak
   stages: [
-    { duration: '5m', target: 100 }, // traffic ramp-up from 1 to 100 users over 5 minutes.
-    { duration: '8h', target: 100 }, // stay at 100 users for 8 hours!!!
-    { duration: '5m', target: 0 }, // ramp-down to 0 users
+    { duration: '5m', target: 100 }, // o táfego faz o movimento de ramp-up from saltando de 1 para 100 usuários em 5 minutos.
+    { duration: '8h', target: 100 }, // mantém 100 usuários por 8 horas!!!
+    { duration: '5m', target: 0 }, //  faz o movimento ramp-down descendo para 0 usuários.
   ],
 };
 ```
@@ -86,11 +86,11 @@ export const options = {
 __Spike testing__
 ```javascript
 export const options = {
-  // Key configurations for spike in this section
+    // Chaves de configuração para Teste Spike
   stages: [
-    { duration: '2m', target: 2000 }, // fast ramp-up to a high point
+    { duration: '2m', target: 2000 }, // repentino movimento de ramp-up com um pico de usuários (2000) em 2 minutos.
     // No plateau
-    { duration: '1m', target: 0 }, // quick ramp-down to 0 users
+    { duration: '1m', target: 0 }, // rapidamente faz o movimento de ramp-down 0 usuários.
   ],
 };
 ```   
@@ -98,13 +98,13 @@ __Breakpoint testing__
 
 ```javascript
 export const options = {
-  // Key configurations for breakpoint in this section
-  executor: 'ramping-arrival-rate', //Assure load increase if the system slows
+ // Chaves de configuração para breakpoint.
+  executor: 'ramping-arrival-rate', // Garanta o aumento da carga se o sistema desacelerar
   stages: [
-    { duration: '2h', target: 20000 }, // just slowly ramp-up to a HUGE load
+    { duration: '2h', target: 20000 }, // apenas aumente lentamente para uma carga ENORME
   ],
 };
-```
+```  
 
 
 ## Como executar via CLI
