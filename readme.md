@@ -36,7 +36,7 @@ Cada tipo de teste deve ser executado de acordo com o contexto da aplicação al
 ***
 ### Tipos de testes e a relação entre número de usuários virtuais e tempo de execução.
 ![image](https://github.com/lucasjct/test-performance/assets/38733166/025ba3ae-8dcc-4722-94d1-171ec480273e) 
-__Fonte:__ [k6 -](https://k6.io/docs/test-types/load-test-types/#test-type-cheat-sheet) -  2023.   
+__Fonte:__ [k6 - Load test type](https://k6.io/docs/test-types/load-test-types/) -  2023.    
 
 
 ## Onde programar os tipos de testes   
