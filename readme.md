@@ -28,10 +28,16 @@ __obs:__ acesse cada tipo de teste da tabela abaixo e veja na documentação ofi
  
 <div class="table-wrapper-module--table-wrapper--0fa35"><table><thead><tr><th>Tipo</th><th>VUs (usuários virtuais)/Throughput</th><th>Duração</th><th>Quando?</th></tr></thead><tbody><tr><td><a href="https://k6.io/docs/test-types/smoke-testing">Smoke</a></td><td>Baixa</td><td>Curta (segundos ou minutos)</td><td>Quando ocorre uma alteração relevante no sistema e é necessário verificar se a lógica de uma funcionalidade importante foi impactada.</td></tr><tr><td><a href="https://k6.io/docs/test-types/load-testing">Carga</a></td><td>Média de produção</td><td>Média (5-60 minutos)</td><td>Avalia se o sistema mantém a performance com a média de usuários em produção.</td></tr><tr><td><a href="https://k6.io/docs/test-types/stress-testing">Stress</a></td><td>Alta (acima da média)</td><td>Média (5-60 minutos)</td><td>Quando o sistema irá receber um carga acima da média e é necessário ver como ele lida com isso.</td></tr><tr><td><a href="https://k6.io/docs/test-types/soak-testing">Soak</a></td><td>Média</td><td>Longa (horas)</td><td>Após alterações para verificar o sistema sob uso contínuo prolongado</td></tr><tr><td><a href="https://k6.io/docs/test-types/spike-testing">Spike</a></td><td>Muito alta</td><td>Curta (alguns minutos)</td><td>Quando o sistema se prepara para eventos sazionais que receberá picos de tráfego</td></tr><tr><td><a href="https://k6.io/docs/test-types/breakpoint-testing">Breakpoint</a></td><td>Aumentar até quebrar</td><td>Enquanto for necessário</td><td>Algumas vezes para encontrar os limites superiores do sistema</td></tr></tbody></table></div>   
 
-__Fonte:__ [k6 - Test type cheat sheet](https://k6.io/docs/test-types/load-test-types/#test-type-cheat-sheet) -  2023.  
+__Fonte:__ [k6 - Load test type](https://k6.io/docs/test-types/load-test-types/) -  2023.    
 
 
-Cada tipo de teste deve ser executado de acordo com o contexto da aplicação alinhado com as necessidades da equipe.
+Cada tipo de teste deve ser executado de acordo com o contexto da aplicação alinhado com as necessidades da equipe.   
+
+***
+### Tipos de testes e a relação entre número de usuários virtuais e tempo de execução.
+![image](https://github.com/lucasjct/test-performance/assets/38733166/025ba3ae-8dcc-4722-94d1-171ec480273e) 
+__Fonte:__ [k6 -](https://k6.io/docs/test-types/load-test-types/#test-type-cheat-sheet) -  2023.   
+
 
 ## Onde programar os tipos de testes   
 
